@@ -1,0 +1,17 @@
+{
+    "apps": [
+        {
+            "name"        : "api",
+            "script"      : "dist/index.js",
+            "instances"   : 1,
+            "exec_mode"   : "cluster",
+            "watch"       : false,
+            "merge_logs"  : true,
+            "cwd"         : "/app/www/nginx-for-nodejs/api/",
+            "env_production" : {
+                "NODE_ENV": process.env.NODE_ENV,
+                "INSTANCE": process.env.INSTANCE
+            }
+        }
+    ]
+}
