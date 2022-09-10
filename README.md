@@ -32,6 +32,7 @@ from inside your container.
 your configuration experiments.
 - `pm2/pm2-development.json`: PM2 profile file. This files contains the information needed by PM2 to run your API as a 
 service and keep it running in case of crash.
+- `config/nginx`: Where all NGinx config files resides and can be edited as your will.
 
 # Contact
 
