@@ -12,61 +12,26 @@ In your local host machine add the following lines to your `/etc/hosts` file in 
 ```
 
 # 2nd Step: Preparing the environment
-Clone the docker repository `git clone https://github.com/wesleymilan/docker-nginx.git`
+Build your custom Docker Image running `./docker/build.sh` 
 
-Clone this repository into `www/` folder:
-```shell
-cd docker-nginx/www
-git clone https://github.com/wesleymilan/nginx-for-nodejs.git
-cd ..
-```
+# 3rd Step: Running Docker
+`docker-compose up`: Standalone version
+`docker-compose up -d`: Daemon version
 
-Build and run the docker container:
-```shell
-./docker/build.sh
-docker-compose up -d
-```
-
-# 3rd Step: Installing the services
-
-Login into the NGinx container:
-```shell
-./docker/nginx/ssh.sh
-```
-
-Install NodeJS, NPM and update your NPM.
-```shell
-apk add nodejs
-apk add npm
-npm i -g npm
-```
-
-Note: Depending on your OS you can use `apt`, `apt-get`, `yum` or the package manager of your preference. For all 
-installation method of NodeJS please visit https://nodejs.org/en/download/package-manager/ 
-
-# 4th Step: Installing PM2
-
-PM2 is a process manager to control and keep your application running even if it crashes for some reason. 
-
-`npm i -g pm2`
-
-# 5th Step: NGinx config
-
-Customize your NGinx files under `config/nginx`.
-
-After customizing your NGinx, from inside NGinx container go into this repo folder `cd /app/www/nginx-for-nodejs` 
-and run the script to apply the NGinx config files `./apply-config.sh`.
-
-# 6th Step: Run the test API using PM2
-
-```shell
-pm2 start /app/www/nginx-for-nodejs/pm2/pm2-development.json
-```
-
-# 7th Step: Check your browser
-
+# 4th Step: Check your browser
 Open http://www.nodejs.dvp/ and check the headers on your devtools, and you should see this entry `Server: nginx`.
 
+# Studying how it works
+The most important scripts are:
+- `docker/nginx/Dockerfile`: that compiles the Docker Image. Here you can find the packages installed on Linux to make
+this experiment work.
+- `docker/nginx/start.sh`: This is the startup script what is executed when the container is activated.
+- `docker/apply-config.sh`: Just a shortcut to apply your changes on NGinx config files. You should run this shell script 
+from inside your container.
+- `docker/nginx/ssh.sh`: Easy way to into your container instance using SSH. This allows you to execute tests and apply 
+your configuration experiments.
+- `pm2/pm2-development.json`: PM2 profile file. This files contains the information needed by PM2 to run your API as a 
+service and keep it running in case of crash.
 
 # Contact
 
