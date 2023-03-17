@@ -2,7 +2,6 @@
 
 # Build Docker images
 echo "Building Docker Images..."
-cd ../../
 ./docker/build.sh
 
 echo "Starting up Docker Containers..."

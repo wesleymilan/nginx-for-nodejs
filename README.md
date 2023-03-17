@@ -15,15 +15,15 @@ In your local host machine add the following lines to your `/etc/hosts` file in 
 Build your custom Docker Image running `./docker/build.sh` 
 
 # 3rd Step: Running Docker
-`docker-compose up`: Standalone version
-`docker-compose up -d`: Daemon version
+`docker-compose up`: Standalone execution
+`docker-compose up -d`: Daemon mode execution
 
 # 4th Step: Check your browser
 Open http://www.nodejs.dvp/ and check the headers on your devtools, and you should see this entry `Server: nginx`.
 
 # Studying how it works
 The most important scripts are:
-- `docker/nginx/Dockerfile`: that compiles the Docker Image. Here you can find the packages installed on Linux to make
+- `docker/nginx/Dockerfile`: This is the file that compiles the Docker Image. Here you can find the packages installed on Linux to make
 this experiment work.
 - `docker/nginx/start.sh`: This is the startup script what is executed when the container is activated.
 - `docker/apply-config.sh`: Just a shortcut to apply your changes on NGinx config files. You should run this shell script 
