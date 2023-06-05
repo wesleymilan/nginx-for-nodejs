@@ -1,9 +1,7 @@
 # nginx-for-nodejs
 Short tutorial on how to setup NGinx to run with NodeJS and PM2.
 
-Full **portuguese** tutorial is here: https://youtube.com/XXXXXXX
-
-Full **english** tutorial is here: https://youtube.com/XXXXXXX
+Full **portuguese** tutorial is here: [https://youtube.com/XXXXXXX](https://youtu.be/Sa74-4ExZ4Q)
 
 # 1st Step: Domain name
 In your local host machine add the following lines to your `/etc/hosts` file in order to find the application.
