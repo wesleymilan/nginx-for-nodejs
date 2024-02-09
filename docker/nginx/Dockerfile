@@ -22,9 +22,10 @@ RUN rc-status
 RUN apk add nginx
 RUN rc-update add nginx
 
-# Nodejs
-RUN apk add nodejs
+# Nodejs 
+RUN apk add nodejs=20.11.0-r0
 RUN apk add npm
 RUN npm i -g npm
 RUN npm i -g pm2
+# @loopback copatible node versions: 16, 18, 20
 RUN npm i -g @loopback/cli
